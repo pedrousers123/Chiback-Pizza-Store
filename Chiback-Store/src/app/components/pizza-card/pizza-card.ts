@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-pizza-card',
+  standalone: true,
   imports: [],
   templateUrl: './pizza-card.html',
-  styleUrl: './pizza-card.css',
+  styleUrl: './pizza-card.css'
 })
-export class PizzaCard {}
+export class PizzaCard {
+
+}

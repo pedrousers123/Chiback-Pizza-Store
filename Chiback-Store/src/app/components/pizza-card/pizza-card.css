@@ -1,0 +1,41 @@
+.pizza-card{
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.pizza-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.25)!important;
+}
+
+.card-img-top{
+    height:220px;
+    object-fit:cover;
+}
+
+.card-title{
+    font-weight:bold;
+    color:#8B0000;
+}
+
+.card-text{
+    color:#555;
+}
+
+.preco{
+    color:#C62828;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.btn-danger{
+    border-radius:10px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-danger:hover{
+    transform:scale(1.03);
+}

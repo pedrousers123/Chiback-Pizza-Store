@@ -1,0 +1,72 @@
+/* Navbar */
+
+.navbar {
+    background: linear-gradient(90deg, #8B0000, #C62828);
+    padding: 15px 0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Logo */
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff !important;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.navbar-brand:hover {
+    color: #FFD54F !important;
+    transform: scale(1.05);
+}
+
+/* Links */
+
+.nav-link {
+    color: white !important;
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-left: 15px;
+    padding: 8px 15px !important;
+    border-radius: 8px;
+    transition: all .3s ease;
+}
+
+.nav-link:hover {
+    background: #FFD54F;
+    color: #8B0000 !important;
+    transform: translateY(-2px);
+}
+
+/* Carrinho */
+
+.bi-cart-fill {
+    margin-right: 6px;
+    font-size: 1.1rem;
+}
+
+/* Botão do menu */
+
+.navbar-toggler {
+    border: 2px solid white;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Responsivo */
+
+@media (max-width: 991px) {
+
+    .navbar-nav {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .nav-link {
+        margin: 8px 0;
+    }
+
+}
