@@ -1,26 +1,33 @@
-<div class="card pizza-card shadow-lg h-100">
+<div class="pizza-card">
 
-    <img src="assets/img/pizza-calabresa.jpg" class="card-img-top" alt="Pizza">
+  <img
+    [src]="pizza().imagem"
+    [alt]="'Pizza ' + pizza().nome"
+    class="pizza-image"
+  >
 
-    <div class="card-body">
+  <div class="pizza-content">
 
-        <h5 class="card-title">
-            Pizza Calabresa
-        </h5>
+    <span class="categoria">
+      {{ pizza().categoria }}
+    </span>
 
-        <p class="card-text">
-            Molho especial, mussarela, calabresa e cebola.
-        </p>
+    <h3>{{ pizza().nome }}</h3>
 
-        <h4 class="preco">
-            R$ 49,90
-        </h4>
+    <p>{{ pizza().descricao }}</p>
 
-        <button class="btn btn-danger w-100">
-            <i class="bi bi-cart-plus"></i>
-            Adicionar ao Carrinho
-        </button>
+    <div class="pizza-bottom">
+
+      <strong>
+        R$ {{ pizza().preco.toFixed(2).replace('.', ',') }}
+      </strong>
+
+      <button type="button">
+        🛒 Adicionar
+      </button>
 
     </div>
+
+  </div>
 
 </div>

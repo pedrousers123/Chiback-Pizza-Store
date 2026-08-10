@@ -1,47 +1,17 @@
-<section class="container my-5">
+<section class="cardapio">
 
-    <h2 class="text-center mb-5">
-        🍕 Nosso Cardápio
-    </h2>
+  <div class="titulo-cardapio">
+    <span>🍕 FEITAS COM CARINHO</span>
+    <h2>Nosso Cardápio</h2>
+    <p>Escolha sua pizza favorita da Chiback!</p>
+  </div>
 
-    <div class="row g-4">
+  <div class="pizza-grid">
 
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <app-pizza-card></app-pizza-card>
-        </div>
+    @for (pizza of produtos(); track pizza.id) {
+      <app-pizza-card [pizza]="pizza"></app-pizza-card>
+    }
 
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <app-pizza-card></app-pizza-card>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <app-pizza-card></app-pizza-card>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <app-pizza-card></app-pizza-card>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <app-pizza-card></app-pizza-card>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <app-pizza-card></app-pizza-card>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <app-pizza-card></app-pizza-card>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <app-pizza-card></app-pizza-card>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <app-pizza-card></app-pizza-card>
-        </div>
-
-    </div>
+  </div>
 
 </section>

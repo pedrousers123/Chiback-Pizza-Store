@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { PizzaCard } from '../pizza-card/pizza-card';
+import { ProductService } from '../../services/product';
+import { Product } from '../../interfaces/product';
 
 @Component({
   selector: 'app-pizza-list',
@@ -10,4 +12,7 @@ import { PizzaCard } from '../pizza-card/pizza-card';
 })
 export class PizzaList {
 
+  private productService = inject(ProductService);
+
+  produtos = signal<Product[]>(this.productService.getProdutos());
 }
