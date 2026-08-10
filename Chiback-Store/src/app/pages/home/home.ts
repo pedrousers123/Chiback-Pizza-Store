@@ -1,14 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Header } from '../../components/header/header';
-import { Banner } from '../../components/banner/banner';
 import { PizzaList } from '../../components/pizza-list/pizza-list';
-import { Footer } from '../../components/footer/footer';
+import { Cart } from '../../components/cart/cart';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Header, Banner, PizzaList, Footer],
+  imports: [Header, PizzaList, Cart],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrl: './home.css',
 })
-export class Home {}
+export class Home {
+  carrinhoAberto = signal(false);
+
+  abrirCarrinho(): void {
+    this.carrinhoAberto.set(true);
+  }
+
+  fecharCarrinho(): void {
+    this.carrinhoAberto.set(false);
+  }
+}

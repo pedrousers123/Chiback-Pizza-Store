@@ -2,14 +2,14 @@
   background: white;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
   height: 100%;
 }
 
 .pizza-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .pizza-image {
@@ -25,51 +25,66 @@
 
 .categoria {
   display: inline-block;
-  background: #fff0c2;
-  color: #9a6500;
-  padding: 5px 10px;
-  border-radius: 20px;
+  margin-bottom: 8px;
+  color: #d99b00;
   font-size: 12px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .pizza-content h3 {
-  margin: 10px 0 8px;
-  font-size: 23px;
+  margin: 0 0 8px;
   color: #8b1e1e;
+  font-size: 21px;
 }
 
 .pizza-content p {
+  min-height: 45px;
+  margin: 0 0 18px;
   color: #666;
   font-size: 14px;
   line-height: 1.5;
-  min-height: 42px;
 }
 
-.pizza-bottom {
+.pizza-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 18px;
+  gap: 10px;
 }
 
-.pizza-bottom strong {
-  color: #222;
-  font-size: 19px;
+.pizza-footer strong {
+  color: #8b1e1e;
+  font-size: 20px;
 }
 
-.pizza-bottom button {
+.pizza-footer button {
   border: none;
-  background: #be0a0a;
-  color: white;
-  padding: 10px 14px;
   border-radius: 10px;
-  cursor: pointer;
+  padding: 10px 14px;
+  background: #d99b00;
+  color: white;
   font-weight: bold;
+  cursor: pointer;
   transition: 0.2s;
 }
 
-.pizza-bottom button:hover {
-  background: #a0170d;
-  transform: scale(1.05);
+.pizza-footer button:hover {
+  background: #b98100;
+  transform: scale(1.03);
+}
+
+.pizza-footer button:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 500px) {
+  .pizza-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .pizza-footer button {
+    width: 100%;
+  }
 }

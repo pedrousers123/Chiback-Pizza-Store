@@ -1,9 +1,9 @@
-<div class="pizza-card">
+<article class="pizza-card">
 
   <img
-    [src]="pizza().imagem"
-    [alt]="'Pizza ' + pizza().nome"
     class="pizza-image"
+    [src]="pizza().imagem"
+    [alt]="pizza().nome"
   >
 
   <div class="pizza-content">
@@ -16,13 +16,16 @@
 
     <p>{{ pizza().descricao }}</p>
 
-    <div class="pizza-bottom">
+    <div class="pizza-footer">
 
       <strong>
         R$ {{ pizza().preco.toFixed(2).replace('.', ',') }}
       </strong>
 
-      <button type="button">
+      <button
+        type="button"
+        (click)="adicionarAoCarrinho()"
+      >
         🛒 Adicionar
       </button>
 
@@ -30,4 +33,4 @@
 
   </div>
 
-</div>
+</article>

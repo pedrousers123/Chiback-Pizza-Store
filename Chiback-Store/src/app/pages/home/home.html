@@ -1,11 +1,50 @@
-<app-header></app-header>
+<app-header
+  (abrirCarrinho)="abrirCarrinho()"
+></app-header>
 
-<main class="container mt-4">
-  <app-banner></app-banner>
+<main>
 
-  <section class="mt-5">
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <span class="destaque">
+        🍕 PIZZARIA CHIBACK
+      </span>
+
+      <h1>
+        A pizza que<br>
+        <strong>você merece!</strong>
+      </h1>
+
+      <p>
+        Ingredientes selecionados, massa deliciosa
+        e muito sabor em cada pedaço.
+      </p>
+
+      <a href="#cardapio" class="btn-cardapio">
+        Ver nosso cardápio
+      </a>
+
+    </div>
+
+    <div class="hero-image">
+      <img
+        src="img/banner.jpg"
+        alt="Pizza da Pizzaria Chiback"
+      >
+    </div>
+
+  </section>
+
+  <section id="cardapio">
     <app-pizza-list></app-pizza-list>
   </section>
-</main>
 
-<app-footer></app-footer>
+  @if (carrinhoAberto()) {
+    <app-cart
+      (fecharCarrinho)="fecharCarrinho()"
+    ></app-cart>
+  }
+
+</main>

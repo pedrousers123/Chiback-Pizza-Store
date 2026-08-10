@@ -1,11 +1,11 @@
 .header {
   width: 100%;
   padding: 18px 7%;
-  background:linear-gradient(to bottom, #831414 0%, #551810 100%);
+  background:linear-gradient(to bottom, #831414 30%, #551810 70%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 15px rgba(255, 254, 254, 0.08);
   position: relative;
   z-index: 10;
 }
@@ -50,7 +50,7 @@ nav {
 }
 
 nav a {
-  color: #555;
+  color: #fffdfd;
   text-decoration: none;
   font-weight: 600;
 }
@@ -86,4 +86,37 @@ nav button:hover {
     width: 45px;
     height: 45px;
   }
+}
+.cart-button {
+  position: relative;
+  border: none;
+  background: #d99b00;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.cart-button:hover {
+  transform: scale(1.05);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 22px;
+  height: 22px;
+  padding: 2px 6px;
+  background: #d62828;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
 }
