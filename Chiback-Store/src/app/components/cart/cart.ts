@@ -16,4 +16,10 @@ export class Cart {
   fechar(): void {
     this.fecharCarrinho.emit();
   }
+
+  finalizarPedido(): void {
+    alert('🍕 Pedido finalizado com sucesso! Obrigado por comprar na Chiback!');
+    this.cartService.limpar();
+    this.fechar();
+  }
 }

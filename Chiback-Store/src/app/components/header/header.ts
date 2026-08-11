@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { CartService } from '../../services/cart.service';
   styleUrl: './header.css',
 })
 export class Header {
+  private router = inject(Router);
   private cartService = inject(CartService);
 
   @Output() abrirCarrinho = new EventEmitter<void>();
@@ -16,7 +18,10 @@ export class Header {
   quantidade = this.cartService.totalItems;
 
   abrir(): void {
-    console.log('CLICOU NO CARRINHO');
     this.abrirCarrinho.emit();
+  }
+
+  irParaAdmin(): void {
+    this.router.navigate(['/admin']);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { PizzaCard } from '../pizza-card/pizza-card';
-import { ProductService } from '../../services/product';
+import { ProductService } from '../../services/product.service';
 import { Product } from '../../interfaces/product';
 
 @Component({

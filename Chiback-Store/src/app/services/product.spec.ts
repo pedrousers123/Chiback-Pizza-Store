@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { Injectable } from '@angular/core';
+import { Product } from '../interfaces/product';
 
-import { Product } from './product';
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductService {
 
-describe('Product', () => {
-  let service: Product;
+  private produtos: Product[] = [
+    
+  ];
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Product);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+  getProdutos(): Product[] {
+    return this.produtos;
+  }
+}
