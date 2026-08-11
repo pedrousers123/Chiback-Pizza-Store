@@ -5,9 +5,7 @@ import { Product } from '../interfaces/product';
   providedIn: 'root',
 })
 export class ProductService {
-
   private produtos: Product[] = [
-
     {
       id: 1,
       nome: 'Pizza Calabresa',
@@ -117,29 +115,39 @@ export class ProductService {
     },
   ];
 
-
   getProdutos(): Product[] {
     return this.produtos;
   }
 
+  getProduto(id: number): Product | undefined {
+    return this.produtos.find(
+      (produto) => produto.id === id,
+    );
+  }
 
   adicionar(produto: Product): void {
-
     const novoId =
       this.produtos.length > 0
-        ? Math.max(...this.produtos.map((item) => item.id)) + 1
+        ? Math.max(
+            ...this.produtos.map(
+              (item) => item.id,
+            ),
+          ) + 1
         : 1;
 
     produto.id = novoId;
 
+    if (produto.estoque < 0) {
+      produto.estoque = 0;
+    }
+
     this.produtos.push(produto);
   }
 
-
   editar(produtoAtualizado: Product): void {
-
     const indice = this.produtos.findIndex(
-      (produto) => produto.id === produtoAtualizado.id
+      (produto) =>
+        produto.id === produtoAtualizado.id,
     );
 
     if (indice !== -1) {
@@ -147,35 +155,58 @@ export class ProductService {
     }
   }
 
-
   excluir(id: number): void {
-
     this.produtos = this.produtos.filter(
-      (produto) => produto.id !== id
+      (produto) => produto.id !== id,
     );
   }
 
-
   colocarEmPromocao(id: number): void {
-
-    const produto = this.produtos.find(
-      (item) => item.id === id
-    );
+    const produto = this.getProduto(id);
 
     if (produto) {
       produto.promocao = true;
+
+      if (
+        produto.precoPromocional <= 0 ||
+        produto.precoPromocional >= produto.preco
+      ) {
+        produto.precoPromocional = Number(
+          (produto.preco * 0.9).toFixed(2),
+        );
+      }
     }
   }
 
-
   removerPromocao(id: number): void {
-
-    const produto = this.produtos.find(
-      (item) => item.id === id
-    );
+    const produto = this.getProduto(id);
 
     if (produto) {
       produto.promocao = false;
+      produto.precoPromocional = 0;
     }
+  }
+
+  baixarEstoque(
+    id: number,
+    quantidade: number,
+  ): boolean {
+    const produto = this.getProduto(id);
+
+    if (!produto) {
+      return false;
+    }
+
+    if (quantidade <= 0) {
+      return false;
+    }
+
+    if (produto.estoque < quantidade) {
+      return false;
+    }
+
+    produto.estoque -= quantidade;
+
+    return true;
   }
 }

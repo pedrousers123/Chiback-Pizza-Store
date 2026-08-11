@@ -1,0 +1,155 @@
+.checkout-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #fff8ef;
+}
+
+.checkout-card {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 35px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.checkout-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.checkout-header span {
+  color: #d99b00;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.checkout-header h1 {
+  margin: 8px 0;
+  color: #8b1e1e;
+}
+
+.checkout-header p {
+  color: #666;
+}
+
+.order-summary {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 14px;
+  background: #fff8ef;
+}
+
+.order-summary h2,
+form h2 {
+  color: #8b1e1e;
+  margin-top: 0;
+}
+
+.summary-item,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.summary-total {
+  margin-top: 10px;
+  border-bottom: none;
+  font-size: 20px;
+  color: #8b1e1e;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.field label {
+  font-weight: bold;
+  color: #444;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 2px solid #d99b00;
+  border-color: #d99b00;
+}
+
+.form-error {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background: #ffe1e1;
+  color: #b42318;
+}
+
+.checkout-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.checkout-buttons button,
+.empty-checkout button {
+  border: none;
+  padding: 13px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-button {
+  background: #eee;
+  color: #444;
+}
+
+.finish-button,
+.empty-checkout button {
+  flex: 1;
+  background: #d99b00;
+  color: white;
+}
+
+.finish-button:hover,
+.empty-checkout button:hover {
+  background: #b98100;
+}
+
+.empty-checkout {
+  text-align: center;
+  padding: 40px 10px;
+}
+
+.empty-checkout h2 {
+  color: #8b1e1e;
+}
+
+@media (max-width: 600px) {
+  .checkout-card {
+    padding: 22px;
+  }
+
+  .checkout-buttons {
+    flex-direction: column;
+  }
+
+  .finish-button {
+    width: 100%;
+  }
+}
