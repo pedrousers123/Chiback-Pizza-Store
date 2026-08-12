@@ -27,9 +27,7 @@ export class Checkout {
   pagamento = '';
 
   validarCpf(): boolean {
-
-    const cpfLimpo =
-      this.cpf.replace(/\D/g, '');
+    const cpfLimpo = this.cpf.replace(/\D/g, '');
 
     return cpfLimpo.length === 11;
   }
@@ -37,73 +35,46 @@ export class Checkout {
   finalizar(formulario: NgForm): void {
 
     if (formulario.invalid) {
-
-      alert(
-        '⚠️ Preencha todos os dados para continuar.'
-      );
-
+      alert('⚠️ Preencha todos os campos obrigatórios.');
       return;
     }
 
     if (!this.validarCpf()) {
-
-      alert(
-        '⚠️ Digite um CPF com 11 números.'
-      );
-
+      alert('⚠️ Digite um CPF com 11 números.');
       return;
     }
 
-    if (
-      this.cartService.items().length === 0
-    ) {
-
-      alert(
-        '🛒 Seu carrinho está vazio.'
-      );
-
+    if (this.cartService.items().length === 0) {
+      alert('🛒 Seu carrinho está vazio.');
       this.router.navigate(['/home']);
-
       return;
     }
 
-    // Verifica estoque
-    for (
-      const item of this.cartService.items()
-    ) {
+    // Verifica o estoque
+    for (const item of this.cartService.items()) {
 
-      const produto =
-        this.productService.getProduto(
-          item.produto.id
-        );
+      const produto = this.productService.getProduto(
+        item.produto.id
+      );
 
       if (!produto) {
-
         alert(
           `❌ O produto ${item.produto.nome} não está disponível.`
         );
-
         return;
       }
 
-      if (
-        produto.estoque <
-        item.quantidade
-      ) {
-
+      if (produto.estoque < item.quantidade) {
         alert(
           `⚠️ Estoque insuficiente para ${produto.nome}.\n` +
           `Disponível: ${produto.estoque}`
         );
-
         return;
       }
     }
 
     // Baixa o estoque
-    for (
-      const item of this.cartService.items()
-    ) {
+    for (const item of this.cartService.items()) {
 
       this.productService.baixarEstoque(
         item.produto.id,
@@ -111,8 +82,7 @@ export class Checkout {
       );
     }
 
-    const total =
-      this.cartService.total();
+    const total = this.cartService.total();
 
     alert(
       `🍕 CHIBACK PIZZARIA 🍕\n\n` +
@@ -121,9 +91,7 @@ export class Checkout {
       `📧 E-mail: ${this.email}\n` +
       `🏠 Endereço: ${this.endereco}\n` +
       `💳 Pagamento: ${this.pagamento}\n\n` +
-      `💰 Total: R$ ${total
-        .toFixed(2)
-        .replace('.', ',')}\n\n` +
+      `💰 Total: R$ ${total.toFixed(2).replace('.', ',')}\n\n` +
       `🙏 Obrigado pela preferência!\n` +
       `🍕 Seu pedido está sendo preparado!`
     );

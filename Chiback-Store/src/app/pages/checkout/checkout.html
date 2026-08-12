@@ -1,113 +1,114 @@
-<form
-  #formulario="ngForm"
-  (ngSubmit)="finalizar(formulario)"
-  novalidate
->
+<main class="checkout-page">
 
-  <h2>📋 Dados do cliente</h2>
+  <div class="checkout-card">
 
-  <div class="field">
-    <label for="nome">Nome completo</label>
+    <h1>🍕 Finalizar compra</h1>
 
-    <input
-      id="nome"
-      name="nome"
-      type="text"
-      [(ngModel)]="nome"
-      required
-      minlength="3"
-      placeholder="Digite seu nome"
+    <p>Preencha seus dados para finalizar o pedido.</p>
+
+    <h2>📋 Dados do cliente</h2>
+
+    <form
+      #formulario="ngForm"
+      (ngSubmit)="finalizar(formulario)"
     >
+
+      <label for="nome">Nome completo</label>
+
+      <input
+        id="nome"
+        name="nome"
+        type="text"
+        [(ngModel)]="nome"
+        required
+        placeholder="Digite seu nome"
+      >
+
+      <label for="cpf">CPF</label>
+
+      <input
+        id="cpf"
+        name="cpf"
+        type="text"
+        [(ngModel)]="cpf"
+        required
+        placeholder="000.000.000-00"
+      >
+
+      <label for="email">E-mail</label>
+
+      <input
+        id="email"
+        name="email"
+        type="email"
+        [(ngModel)]="email"
+        required
+        placeholder="seuemail@email.com"
+      >
+
+      <label for="endereco">Endereço</label>
+
+      <input
+        id="endereco"
+        name="endereco"
+        type="text"
+        [(ngModel)]="endereco"
+        required
+        placeholder="Rua, número e bairro"
+      >
+
+      <label for="pagamento">
+        Método de pagamento
+      </label>
+
+      <select
+        id="pagamento"
+        name="pagamento"
+        [(ngModel)]="pagamento"
+        required
+      >
+
+        <option value="">
+          Selecione
+        </option>
+
+        <option value="Pix">
+          Pix
+        </option>
+
+        <option value="Cartão de crédito">
+          Cartão de crédito
+        </option>
+
+        <option value="Cartão de débito">
+          Cartão de débito
+        </option>
+
+        <option value="Dinheiro">
+          Dinheiro
+        </option>
+
+      </select>
+
+      <div class="buttons">
+
+        <button
+          type="button"
+          (click)="voltar()"
+        >
+          ← Voltar
+        </button>
+
+        <button
+          type="submit"
+        >
+          🍕 Finalizar compra
+        </button>
+
+      </div>
+
+    </form>
+
   </div>
 
-  <div class="field">
-    <label for="cpf">CPF</label>
-
-    <input
-      id="cpf"
-      name="cpf"
-      type="text"
-      [(ngModel)]="cpf"
-      required
-      maxlength="14"
-      placeholder="000.000.000-00"
-    >
-  </div>
-
-  <div class="field">
-    <label for="email">E-mail</label>
-
-    <input
-      id="email"
-      name="email"
-      type="email"
-      [(ngModel)]="email"
-      required
-      email
-      placeholder="seuemail@email.com"
-    >
-  </div>
-
-  <div class="field">
-    <label for="endereco">Endereço</label>
-
-    <input
-      id="endereco"
-      name="endereco"
-      type="text"
-      [(ngModel)]="endereco"
-      required
-      minlength="5"
-      placeholder="Rua, número e bairro"
-    >
-  </div>
-
-  <div class="field">
-    <label for="pagamento">Método de pagamento</label>
-
-    <select
-      id="pagamento"
-      name="pagamento"
-      [(ngModel)]="pagamento"
-      required
-    >
-      <option value="">Selecione</option>
-      <option value="Pix">Pix</option>
-      <option value="Cartão de crédito">
-        Cartão de crédito
-      </option>
-      <option value="Cartão de débito">
-        Cartão de débito
-      </option>
-      <option value="Dinheiro">
-        Dinheiro
-      </option>
-    </select>
-  </div>
-
-  @if (formulario.submitted && formulario.invalid) {
-    <div class="form-error">
-      ⚠️ Preencha todos os campos corretamente.
-    </div>
-  }
-
-  <div class="checkout-buttons">
-
-    <button
-      type="button"
-      class="back-button"
-      (click)="voltar()"
-    >
-      ← Voltar
-    </button>
-
-    <button
-      type="submit"
-      class="finish-button"
-    >
-      🍕 Finalizar compra
-    </button>
-
-  </div>
-
-</form>
+</main>

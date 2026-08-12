@@ -32,7 +32,7 @@
 
         <div>
           <h2>
-            {{ editando ? '✏️ Editar pizza' : '🍕 Adicionar pizza' }}
+            {{ editando ? ' Editar pizza' : ' Adicionar pizza' }}
           </h2>
         </div>
 
@@ -100,7 +100,7 @@
 
         <div class="field">
 
-          <label>🔥 Preço promocional</label>
+          <label> Preço promocional</label>
 
           <input
             type="number"
@@ -165,7 +165,7 @@
       <div class="promotion-box">
 
         <div>
-          <strong>🔥 Colocar em promoção</strong>
+          <strong> Colocar em promoção</strong>
 
           <p>
             Ative para mostrar o preço promocional.
@@ -203,7 +203,7 @@
           class="save-button"
           (click)="salvarProduto()"
         >
-          💾
+          
           {{ editando ? 'Salvar alterações' : 'Cadastrar pizza' }}
         </button>
 
@@ -222,7 +222,7 @@
 
       <div>
 
-        <h2>🍕 Produtos</h2>
+        <h2> Produtos</h2>
 
         <p>Gerencie o seu cardápio</p>
 
@@ -294,7 +294,7 @@
               </strong>
 
               <span class="sale-badge">
-                🔥 PROMOÇÃO
+                 PROMOÇÃO
               </span>
 
             } @else {
@@ -347,7 +347,7 @@
               class="edit-button"
               (click)="editarProduto(produtoItem)"
             >
-              ✏️ Editar
+               Editar
             </button>
 
 
@@ -360,8 +360,8 @@
 
               {{
                 produtoItem.promocao
-                  ? '🏷️ Remover promoção'
-                  : '🔥 Promoção'
+                  ? ' Remover promoção'
+                  : ' Promoção'
               }}
 
             </button>
