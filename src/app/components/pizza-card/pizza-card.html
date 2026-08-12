@@ -1,0 +1,75 @@
+<article class="pizza-card">
+
+  <img
+    class="pizza-image"
+    [src]="pizza().imagem"
+    [alt]="pizza().nome"
+  >
+
+  <div class="pizza-content">
+
+    <div class="categoria">
+      {{ pizza().categoria }}
+
+      @if (pizza().promocao) {
+        <span class="promocao">
+           PROMOÇÃO
+        </span>
+      }
+    </div>
+
+    <h3>
+      {{ pizza().nome }}
+    </h3>
+
+    <p>
+      {{ pizza().descricao }}
+    </p>
+
+    <div class="estoque">
+      📦 Estoque: {{ estoqueDisponivel() }}
+    </div>
+
+    <div class="pizza-footer">
+
+      <div class="precos">
+
+        @if (pizza().promocao) {
+
+          <span class="preco-antigo">
+            R$ {{ pizza().preco.toFixed(2).replace('.', ',') }}
+          </span>
+
+          <strong class="preco-promocao">
+            R$ {{ precoAtual().toFixed(2).replace('.', ',') }}
+          </strong>
+
+        } @else {
+
+          <strong>
+            R$ {{ precoAtual().toFixed(2).replace('.', ',') }}
+          </strong>
+
+        }
+
+      </div>
+
+      <button
+        type="button"
+        (click)="adicionarAoCarrinho()"
+        [disabled]="!podeAdicionar()"
+      >
+
+        @if (estoqueDisponivel() > 0) {
+          🛒 Adicionar
+        } @else {
+          ❌ Esgotado
+        }
+
+      </button>
+
+    </div>
+
+  </div>
+
+</article>

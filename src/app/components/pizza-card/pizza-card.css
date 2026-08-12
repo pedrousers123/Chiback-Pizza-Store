@@ -1,0 +1,96 @@
+.pizza-card {
+  background: white;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 4px 12px #0002;
+  transition: 0.3s;
+}
+
+.pizza-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px #0003;
+}
+
+.pizza-image {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.pizza-card:hover .pizza-image {
+  transform: scale(1.03);
+}
+
+.pizza-content {
+  padding: 10px;
+}
+
+.categoria {
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.promocao {
+  background: #dff5c8;
+  color: #4d7c20;
+  padding: 5px 9px;
+  border-radius: 15px;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.pizza-card h3 {
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.pizza-card p {
+  color: #777;
+}
+
+.estoque {
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+.preco-antigo {
+  display: block;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.preco-promocao {
+  color: #b22;
+  font-size: 22px;
+}
+
+.pizza-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pizza-footer button {
+  border: 0;
+  background: #e0a900;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pizza-footer button:hover {
+  background: #c99300;
+  transform: scale(1.05);
+}
+
+.pizza-footer button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+  transform: none;
+}

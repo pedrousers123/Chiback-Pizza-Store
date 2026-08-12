@@ -1,0 +1,114 @@
+<main class="detail-page">
+  @if (produto(); as pizza) {
+    <section class="detail-card">
+      <button
+        type="button"
+        class="back"
+        (click)="voltar()"
+      >
+        ← Voltar ao cardápio
+      </button>
+
+      <div class="detail-content">
+        <div class="detail-image">
+          <img
+            [src]="pizza.imagem"
+            [alt]="pizza.nome"
+          />
+        </div>
+
+        <div class="detail-info">
+          <span class="category">
+            {{ pizza.categoria }}
+          </span>
+
+          @if (pizza.promocao) {
+            <span class="promotion">
+              🔥 PROMOÇÃO
+            </span>
+          }
+
+          <h1>{{ pizza.nome }}</h1>
+
+          <p class="description">
+            {{ pizza.descricao }}
+          </p>
+
+          @if (
+            pizza.promocao &&
+            pizza.precoPromocional > 0 &&
+            pizza.precoPromocional < pizza.preco
+          ) {
+            <del class="old-price">
+              R$
+              {{
+                pizza.preco
+                  .toFixed(2)
+                  .replace('.', ',')
+              }}
+            </del>
+
+            <div class="price">
+              R$
+              {{
+                pizza.precoPromocional
+                  .toFixed(2)
+                  .replace('.', ',')
+              }}
+            </div>
+          } @else {
+            <div class="price">
+              R$
+              {{
+                pizza.preco
+                  .toFixed(2)
+                  .replace('.', ',')
+              }}
+            </div>
+          }
+
+          @if (pizza.estoque === 0) {
+            <div class="stock sold">
+              ❌ Produto esgotado
+            </div>
+          } @else if (pizza.estoque <= 3) {
+            <div class="stock low">
+              ⚠️ Últimas
+              {{ pizza.estoque }}
+              unidades
+            </div>
+          } @else {
+            <div class="stock">
+              📦 {{ pizza.estoque }} unidades
+              disponíveis
+            </div>
+          }
+
+          <button
+            type="button"
+            class="add-button"
+            [disabled]="pizza.estoque === 0"
+            (click)="adicionar()"
+          >
+            @if (pizza.estoque === 0) {
+              ❌ Esgotado
+            } @else {
+              🛒 Adicionar ao carrinho
+            }
+          </button>
+        </div>
+      </div>
+    </section>
+  } @else {
+    <section class="not-found">
+      <h1>Produto não encontrado</h1>
+
+      <button
+        type="button"
+        (click)="voltar()"
+      >
+        Voltar ao cardápio
+      </button>
+    </section>
+  }
+</main>
