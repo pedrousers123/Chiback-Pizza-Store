@@ -4,21 +4,29 @@
     class="pizza-image"
     [src]="pizza().imagem"
     [alt]="pizza().nome"
+    (click)="abrirDetalhes()"
   >
 
   <div class="pizza-content">
 
     <div class="categoria">
+
       {{ pizza().categoria }}
 
       @if (pizza().promocao) {
+
         <span class="promocao">
-           PROMOÇÃO
+          PROMOÇÃO
         </span>
+
       }
+
     </div>
 
-    <h3>
+    <h3
+      class="pizza-nome"
+      (click)="abrirDetalhes()"
+    >
       {{ pizza().nome }}
     </h3>
 
@@ -61,9 +69,13 @@
       >
 
         @if (estoqueDisponivel() > 0) {
+
           🛒 Adicionar
+
         } @else {
+
           ❌ Esgotado
+
         }
 
       </button>

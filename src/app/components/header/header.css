@@ -97,6 +97,10 @@ nav button:hover {
   border-radius: 50%;
   font-size: 21px;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart-button:hover {
@@ -115,24 +119,10 @@ nav button:hover {
   border-radius: 50%;
   font-size: 12px;
   font-weight: bold;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid white;
-}
-.admin-button {
-  border: none;
-  background: transparent;
-  color: white;
-  font: inherit;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 8px;
-  transition: 0.2s;
-}
 
-.admin-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  cursor: pointer;
+  border: 2px solid white;
 }

@@ -37,14 +37,22 @@
 
       <label for="email">E-mail</label>
 
-      <input
-        id="email"
-        name="email"
-        type="email"
-        [(ngModel)]="email"
-        required
-        placeholder="seuemail@email.com"
-      >
+<input
+  id="email"
+  name="email"
+  type="email"
+  [(ngModel)]="email"
+  #emailCampo="ngModel"
+  required
+  email
+  placeholder="seuemail@email.com"
+>
+
+@if (emailCampo.invalid && emailCampo.touched) {
+  <small class="erro-email">
+    ⚠️ Digite um e-mail válido.
+  </small>
+}
 
       <label for="endereco">Endereço</label>
 

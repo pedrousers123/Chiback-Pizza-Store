@@ -94,3 +94,26 @@
   cursor: not-allowed;
   transform: none;
 }
+.estoque-baixo {
+  color: #c62828;
+  font-weight: bold;
+  background: #ffebee;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.estoque-esgotado {
+  color: #777;
+  font-weight: bold;
+}
+.pizza-image {
+  cursor: pointer;
+}
+
+.pizza-nome {
+  cursor: pointer;
+}
+
+.pizza-nome:hover {
+  color: #d99b00;
+}

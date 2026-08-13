@@ -14,10 +14,9 @@ export class ProductService {
       precoPromocional: 0,
       imagem: 'img/calabresa.jpg',
       categoria: 'Pizzas',
-      estoque: 10,
+      estoque: 21,
       promocao: false,
     },
-
     {
       id: 2,
       nome: 'Pizza Frango com Catupiry',
@@ -26,10 +25,9 @@ export class ProductService {
       precoPromocional: 0,
       imagem: 'img/frango.jpg',
       categoria: 'Pizzas',
-      estoque: 10,
+      estoque: 13,
       promocao: false,
     },
-
     {
       id: 3,
       nome: 'Pizza Quatro Queijos',
@@ -38,10 +36,9 @@ export class ProductService {
       precoPromocional: 0,
       imagem: 'img/queijos.jpg',
       categoria: 'Pizzas',
-      estoque: 10,
+      estoque: 24,
       promocao: false,
     },
-
     {
       id: 4,
       nome: 'Pizza Portuguesa',
@@ -50,10 +47,9 @@ export class ProductService {
       precoPromocional: 0,
       imagem: 'img/portuguesa.jpg',
       categoria: 'Pizzas',
-      estoque: 10,
+      estoque: 20,
       promocao: false,
     },
-
     {
       id: 5,
       nome: 'Pizza Marguerita',
@@ -62,10 +58,9 @@ export class ProductService {
       precoPromocional: 0,
       imagem: 'img/marguerita.jpg',
       categoria: 'Pizzas',
-      estoque: 10,
+      estoque: 17,
       promocao: false,
     },
-
     {
       id: 6,
       nome: 'Pizza Bacon',
@@ -74,10 +69,9 @@ export class ProductService {
       precoPromocional: 0,
       imagem: 'img/bacon.jpg',
       categoria: 'Pizzas',
-      estoque: 10,
+      estoque: 29,
       promocao: false,
     },
-
     {
       id: 7,
       nome: 'Pizza Pepperoni',
@@ -86,10 +80,9 @@ export class ProductService {
       precoPromocional: 0,
       imagem: 'img/peperone.jpg',
       categoria: 'Pizzas',
-      estoque: 10,
+      estoque: 19,
       promocao: false,
     },
-
     {
       id: 8,
       nome: 'Morango com Chocolate',
@@ -98,10 +91,9 @@ export class ProductService {
       precoPromocional: 0,
       imagem: 'img/morango.jpg',
       categoria: 'Pizzas',
-      estoque: 10,
+      estoque: 23,
       promocao: false,
     },
-
     {
       id: 9,
       nome: 'Pizza Chocolate',
@@ -110,7 +102,7 @@ export class ProductService {
       precoPromocional: 0,
       imagem: 'img/chocolate.jpg',
       categoria: 'Pizzas',
-      estoque: 10,
+      estoque: 25,
       promocao: false,
     },
   ];

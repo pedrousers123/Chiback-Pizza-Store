@@ -15,7 +15,6 @@ import { ProductService } from '../../services/product.service';
 export class Checkout {
 
   private router = inject(Router);
-
   cartService = inject(CartService);
 
   private productService = inject(ProductService);
@@ -32,10 +31,21 @@ export class Checkout {
     return cpfLimpo.length === 11;
   }
 
+  validarEmail(): boolean {
+    const email = this.email.trim();
+
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
   finalizar(formulario: NgForm): void {
 
     if (formulario.invalid) {
       alert('⚠️ Preencha todos os campos obrigatórios.');
+      return;
+    }
+
+    if (!this.validarEmail()) {
+      alert('⚠️ Digite um e-mail válido.');
       return;
     }
 
@@ -50,7 +60,6 @@ export class Checkout {
       return;
     }
 
-    // Verifica o estoque
     for (const item of this.cartService.items()) {
 
       const produto = this.productService.getProduto(
@@ -73,13 +82,13 @@ export class Checkout {
       }
     }
 
-    // Baixa o estoque
     for (const item of this.cartService.items()) {
 
       this.productService.baixarEstoque(
         item.produto.id,
         item.quantidade
       );
+
     }
 
     const total = this.cartService.total();
