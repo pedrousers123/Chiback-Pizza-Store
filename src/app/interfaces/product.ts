@@ -9,8 +9,8 @@ export interface Product {
   estoque: number;
   promocao: boolean;
 
-  origem: string;
-  ingredientes: string;
-  tamanho: string;
-  curiosidade: string;
+  origem?: string;
+  ingredientes?: string;
+  tamanho?: string;
+  curiosidade?: string;
 }

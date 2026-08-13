@@ -1,87 +1,154 @@
+/* PÁGINA */
 .checkout-page {
   min-height: 100vh;
   padding: 40px 20px;
-  background: #f5f1eb;
+  background: #f7f3ec;
+  box-sizing: border-box;
 }
 
-.checkout-card {
-  max-width: 600px;
-  margin: auto;
-  padding: 30px;
-  background: white;
-  border-radius: 18px;
-  box-shadow: 0 8px 25px #0002;
+
+/* CONTAINER */
+.checkout-container {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
-.checkout-card h1 {
+
+/* CABEÇALHO */
+.checkout-header {
   text-align: center;
-  color: #d49a00;
-  margin-bottom: 5px;
+  margin-bottom: 25px;
 }
 
-.checkout-card p {
-  text-align: center;
+.checkout-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  color: #4b2e20;
+}
+
+.checkout-header p {
+  margin: 0;
   color: #777;
+  font-size: 15px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+
+/* CARD */
+.checkout-card {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
-label {
-  font-weight: bold;
-  margin-top: 8px;
+.checkout-card h2 {
+  margin: 0 0 25px;
+  color: #4b2e20;
+  font-size: 22px;
 }
 
-input,
-select {
-  padding: 12px;
+
+/* CAMPOS */
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 600;
+  color: #4b2e20;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  height: 45px;
+  padding: 0 13px;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: .2s;
-}
-
-input:focus,
-select:focus {
+  border-radius: 9px;
+  box-sizing: border-box;
+  font-size: 15px;
   outline: none;
-  border-color: #d49a00;
-  box-shadow: 0 0 5px #d49a0066;
+  background: #fff;
+  transition: 0.2s;
 }
 
-.buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
+.campo input:focus,
+.campo select:focus {
+  border-color: #d99a00;
+  box-shadow: 0 0 0 2px rgba(217, 154, 0, 0.12);
 }
 
-button {
-  flex: 1;
-  padding: 12px;
-  border: 0;
-  border-radius: 8px;
+
+/* TEXTO CPF */
+.campo small {
+  display: block;
+  margin-top: 6px;
+  color: #888;
+  font-size: 12px;
+}
+
+
+/* BOTÃO FINALIZAR */
+.finalizar-button {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #c62828;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  font-weight: bold;
-  transition: .2s;
+  transition: 0.2s;
 }
 
-button:hover {
-  transform: translateY(-2px);
-  opacity: .9;
+.finalizar-button:hover {
+  background: #a91f1f;
+  transform: translateY(-1px);
 }
 
-.buttons button:first-child {
-  background: #777;
-  color: white;
+
+/* BOTÃO VOLTAR */
+.voltar-button {
+  width: 100%;
+  height: 45px;
+  margin-top: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  color: #555;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.buttons button:last-child {
-  background: #d49a00;
-  color: white;
+.voltar-button:hover {
+  background: #f3f3f3;
 }
-.erro-email {
-  color: #c62828;
-  font-weight: bold;
-  margin-top: -4px;
+
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+  .checkout-page {
+    padding: 25px 15px;
+  }
+
+  .checkout-header h1 {
+    font-size: 26px;
+  }
+
+  .checkout-card {
+    padding: 22px 18px;
+    border-radius: 14px;
+  }
+
+  .checkout-card h2 {
+    font-size: 20px;
+  }
+
 }

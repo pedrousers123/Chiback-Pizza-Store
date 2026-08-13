@@ -1,9 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { CartService } from '../../services/cart.service';
-import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,103 +12,148 @@ import { ProductService } from '../../services/product.service';
 })
 export class Checkout {
 
-  private router = inject(Router);
-  cartService = inject(CartService);
-
-  private productService = inject(ProductService);
+  private cartService = inject(CartService);
 
   nome = '';
-  cpf = '';
   email = '';
+  cpf = '';
   endereco = '';
   pagamento = '';
 
-  validarCpf(): boolean {
+  constructor() {}
+
+  validarCPF(): boolean {
+
     const cpfLimpo = this.cpf.replace(/\D/g, '');
 
-    return cpfLimpo.length === 11;
+    // CPF precisa ter 11 números
+    if (cpfLimpo.length !== 11) {
+      return false;
+    }
+
+    // Não aceita números repetidos
+    if (/^(\d)\1+$/.test(cpfLimpo)) {
+      return false;
+    }
+
+    const numeros = cpfLimpo.split('').map(Number);
+
+    // Primeiro dígito verificador
+    let soma = 0;
+
+    for (let i = 0; i < 9; i++) {
+      soma += numeros[i] * (10 - i);
+    }
+
+    let resto = soma % 11;
+
+    let primeiroDigito = resto < 2 ? 0 : 11 - resto;
+
+    if (primeiroDigito !== numeros[9]) {
+      return false;
+    }
+
+    // Segundo dígito verificador
+    soma = 0;
+
+    for (let i = 0; i < 10; i++) {
+      soma += numeros[i] * (11 - i);
+    }
+
+    resto = soma % 11;
+
+    let segundoDigito = resto < 2 ? 0 : 11 - resto;
+
+    if (segundoDigito !== numeros[10]) {
+      return false;
+    }
+
+    return true;
   }
 
-  validarEmail(): boolean {
-    const email = this.email.trim();
 
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
+  finalizarPedido(): void {
 
-  finalizar(formulario: NgForm): void {
-
-    if (formulario.invalid) {
-      alert('⚠️ Preencha todos os campos obrigatórios.');
+    // Verifica nome
+    if (!this.nome.trim()) {
+      alert('⚠️ Digite seu nome.');
       return;
     }
 
-    if (!this.validarEmail()) {
-      alert('⚠️ Digite um e-mail válido.');
+    // Verifica e-mail
+    if (!this.email.trim()) {
+      alert('⚠️ Digite seu e-mail.');
       return;
     }
 
-    if (!this.validarCpf()) {
-      alert('⚠️ Digite um CPF com 11 números.');
+    // Verifica CPF
+    if (!this.validarCPF()) {
+      alert('❌ CPF inválido. Digite um CPF válido.');
       return;
     }
 
-    if (this.cartService.items().length === 0) {
+    // Verifica endereço
+    if (!this.endereco.trim()) {
+      alert('⚠️ Digite seu endereço.');
+      return;
+    }
+
+    // Verifica pagamento
+    if (!this.pagamento) {
+      alert('⚠️ Escolha uma forma de pagamento.');
+      return;
+    }
+
+    // Verifica carrinho
+    const itens = this.cartService.items();
+
+    if (itens.length === 0) {
       alert('🛒 Seu carrinho está vazio.');
-      this.router.navigate(['/home']);
       return;
     }
 
-    for (const item of this.cartService.items()) {
-
-      const produto = this.productService.getProduto(
-        item.produto.id
-      );
-
-      if (!produto) {
-        alert(
-          `❌ O produto ${item.produto.nome} não está disponível.`
-        );
-        return;
-      }
-
-      if (produto.estoque < item.quantidade) {
-        alert(
-          `⚠️ Estoque insuficiente para ${produto.nome}.\n` +
-          `Disponível: ${produto.estoque}`
-        );
-        return;
-      }
-    }
-
-    for (const item of this.cartService.items()) {
-
-      this.productService.baixarEstoque(
-        item.produto.id,
-        item.quantidade
-      );
-
-    }
+    const cpfFormatado = this.formatarCPF(this.cpf);
 
     const total = this.cartService.total();
 
     alert(
-      `🍕 CHIBACK PIZZARIA 🍕\n\n` +
-      `✅ PEDIDO REALIZADO COM SUCESSO!\n\n` +
-      `👤 Cliente: ${this.nome}\n` +
-      `📧 E-mail: ${this.email}\n` +
-      `🏠 Endereço: ${this.endereco}\n` +
-      `💳 Pagamento: ${this.pagamento}\n\n` +
-      `💰 Total: R$ ${total.toFixed(2).replace('.', ',')}\n\n` +
-      `🙏 Obrigado pela preferência!\n` +
-      `🍕 Seu pedido está sendo preparado!`
+      '🍕 CHIBACK PIZZARIA\n\n' +
+      '✅ PEDIDO REALIZADO COM SUCESSO!\n\n' +
+      '👤 Cliente: ' + this.nome + '\n' +
+      '🪪 CPF: ' + cpfFormatado + '\n' +
+      '📧 E-mail: ' + this.email + '\n' +
+      '🏠 Endereço: ' + this.endereco + '\n' +
+      '💳 Pagamento: ' + this.pagamento + '\n\n' +
+      '💰 Total: R$ ' + total.toFixed(2).replace('.', ',') +
+      '\n\n' +
+      '🙏 Obrigado pela preferência!\n' +
+      '🍕 Seu pedido está sendo preparado!'
     );
 
+    // Limpa o carrinho
     this.cartService.limpar();
 
-    this.router.navigate(['/home']);
+    // Limpa os campos
+    this.nome = '';
+    this.email = '';
+    this.cpf = '';
+    this.endereco = '';
+    this.pagamento = '';
   }
 
-  voltar(): void {
-    this.router.navigate(['/home']);
+
+  formatarCPF(valor: string): string {
+
+    const cpf = valor.replace(/\D/g, '');
+
+    if (cpf.length !== 11) {
+      return valor;
+    }
+
+    return cpf.replace(
+      /(\d{3})(\d{3})(\d{3})(\d{2})/,
+      '$1.$2.$3-$4'
+    );
   }
+
 }

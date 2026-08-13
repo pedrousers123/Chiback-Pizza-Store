@@ -125,3 +125,27 @@
     font-size: 27px;
   }
 }
+.informacoes-pizza {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.informacao {
+  background: #fff8df;
+  padding: 12px 15px;
+  border-radius: 10px;
+}
+
+.informacao strong {
+  display: block;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.informacao p {
+  margin: 0;
+  color: #666;
+  line-height: 1.4;
+}

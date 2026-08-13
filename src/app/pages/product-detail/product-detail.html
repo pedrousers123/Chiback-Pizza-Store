@@ -1,165 +1,238 @@
-<div class="produto-detalhe">
+<main class="detail-page">
 
-  @if (pizza) {
+  @if (produto()) {
 
-    <div class="produto-card">
+    <section class="detail-card">
 
-      <!-- Imagem -->
-      <div class="produto-imagem">
-        <img
-          [src]="pizza.imagem"
-          [alt]="pizza.nome"
-        >
-      </div>
+      <!-- VOLTAR -->
+      <button
+        type="button"
+        class="back"
+        (click)="voltar()"
+      >
+        ← Voltar ao cardápio
+      </button>
 
-      <!-- Informações -->
-      <div class="produto-info">
 
-        <span class="categoria">
-          {{ pizza.categoria }}
-        </span>
+      <div class="detail-content">
 
-        @if (pizza.promocao) {
-          <span class="promocao">
-            PROMOÇÃO
-          </span>
-        }
+        <!-- IMAGEM DA PIZZA -->
+        <div class="detail-image">
 
-        <h1>
-          {{ pizza.nome }}
-        </h1>
-
-        <p class="descricao">
-          {{ pizza.descricao }}
-        </p>
-
-        <!-- Informações da pizza -->
-        <div class="informacoes">
-
-          <div class="informacao">
-            <strong>🌎 Origem</strong>
-            <p>
-              {{ pizza.origem }}
-            </p>
-          </div>
-
-          <div class="informacao">
-            <strong>🍕 Ingredientes</strong>
-            <p>
-              {{ pizza.ingredientes }}
-            </p>
-          </div>
-
-          <div class="informacao">
-            <strong>📏 Tamanho</strong>
-            <p>
-              {{ pizza.tamanho }}
-            </p>
-          </div>
-
-          <div class="informacao">
-            <strong>💡 Curiosidade</strong>
-            <p>
-              {{ pizza.curiosidade }}
-            </p>
-          </div>
+          <img
+            [src]="produto()!.imagem"
+            [alt]="produto()!.nome"
+          >
 
         </div>
 
-        <!-- Estoque -->
-        <div class="estoque">
 
-          @if (pizza.estoque > 0) {
+        <!-- INFORMAÇÕES -->
+        <div class="detail-info">
 
-            📦
-            {{ pizza.estoque }}
-            unidades disponíveis
+          <!-- CATEGORIA -->
+          <div class="top-info">
 
-          } @else {
-
-            ❌ Produto esgotado
-
-          }
-
-        </div>
-
-        <!-- Preço -->
-        <div class="preco">
-
-          @if (
-            pizza.promocao &&
-            pizza.precoPromocional > 0 &&
-            pizza.precoPromocional < pizza.preco
-          ) {
-
-            <span class="preco-antigo">
-              R$ {{ pizza.preco.toFixed(2).replace('.', ',') }}
+            <span class="category">
+              {{ produto()!.categoria }}
             </span>
 
-            <strong>
-              R$ {{ pizza.precoPromocional.toFixed(2).replace('.', ',') }}
-            </strong>
+            @if (produto()!.promocao) {
+
+              <span class="promotion">
+                🔥 PROMOÇÃO
+              </span>
+
+            }
+
+          </div>
+
+
+          <!-- NOME -->
+          <h1>
+            {{ produto()!.nome }}
+          </h1>
+
+
+          <!-- DESCRIÇÃO -->
+          <p class="description">
+            {{ produto()!.descricao }}
+          </p>
+
+
+          <!-- INFORMAÇÕES DA PIZZA -->
+          <div class="informacoes-pizza">
+
+            <!-- ORIGEM -->
+            <div class="informacao">
+
+              <strong>
+                🌎 Origem
+              </strong>
+
+              <p>
+                {{ produto()!.origem || 'Brasil' }}
+              </p>
+
+            </div>
+
+
+            <!-- INGREDIENTES -->
+            <div class="informacao">
+
+              <strong>
+                🧀 Ingredientes
+              </strong>
+
+              <p>
+                {{ produto()!.ingredientes || 'Ingredientes selecionados.' }}
+              </p>
+
+            </div>
+
+
+            <!-- TAMANHO -->
+            <div class="informacao">
+
+              <strong>
+                📏 Tamanho
+              </strong>
+
+              <p>
+                {{ produto()!.tamanho || 'Grande - 8 fatias' }}
+              </p>
+
+            </div>
+
+
+            <!-- CURIOSIDADE -->
+            <div class="informacao">
+
+              <strong>
+                💡 Curiosidade
+              </strong>
+
+              <p>
+                {{ produto()!.curiosidade || 'Uma das deliciosas opções da Chiback Pizza.' }}
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- PREÇO -->
+          <div class="price-area">
+
+            @if (
+              produto()!.promocao &&
+              produto()!.precoPromocional > 0 &&
+              produto()!.precoPromocional < produto()!.preco
+            ) {
+
+              <span class="old-price">
+
+                R$
+                {{ produto()!.preco.toFixed(2).replace('.', ',') }}
+
+              </span>
+
+              <div class="price">
+
+                R$
+                {{ produto()!.precoPromocional.toFixed(2).replace('.', ',') }}
+
+              </div>
+
+            } @else {
+
+              <div class="price">
+
+                R$
+                {{ produto()!.preco.toFixed(2).replace('.', ',') }}
+
+              </div>
+
+            }
+
+          </div>
+
+
+          <!-- ESTOQUE -->
+          @if (produto()!.estoque === 0) {
+
+            <div class="stock sold">
+              ❌ Produto esgotado
+            </div>
+
+          } @else if (produto()!.estoque <= 3) {
+
+            <div class="stock low">
+
+              ⚠️ Últimas
+              {{ produto()!.estoque }}
+              unidades
+
+            </div>
 
           } @else {
 
-            <strong>
-              R$ {{ pizza.preco.toFixed(2).replace('.', ',') }}
-            </strong>
+            <div class="stock">
+
+              📦
+              {{ produto()!.estoque }}
+              unidades disponíveis
+
+            </div>
 
           }
+
+
+          <!-- ADICIONAR AO CARRINHO -->
+          <button
+            type="button"
+            class="add-button"
+            [disabled]="produto()!.estoque === 0"
+            (click)="adicionar()"
+          >
+
+            @if (produto()!.estoque === 0) {
+
+              ❌ Esgotado
+
+            } @else {
+
+              🛒 Adicionar ao carrinho
+
+            }
+
+          </button>
 
         </div>
 
-        <!-- Botão adicionar -->
-        <button
-          type="button"
-          class="add-button"
-          [disabled]="pizza.estoque === 0"
-          (click)="adicionar()"
-        >
-
-          @if (pizza.estoque === 0) {
-
-            ❌ Esgotado
-
-          } @else {
-
-            🛒 Adicionar ao carrinho
-
-          }
-
-        </button>
-
-        <!-- Voltar -->
-        <button
-          type="button"
-          class="voltar-button"
-          (click)="voltar()"
-        >
-          ← Voltar ao cardápio
-        </button>
-
       </div>
 
-    </div>
+    </section>
 
   } @else {
 
-    <div class="produto-nao-encontrado">
+    <!-- PRODUTO NÃO ENCONTRADO -->
 
-      <h2>
+    <section class="not-found">
+
+      <h1>
         Produto não encontrado
-      </h2>
+      </h1>
 
       <button
         type="button"
         (click)="voltar()"
       >
-        Voltar ao cardápio
+        ← Voltar ao cardápio
       </button>
 
-    </div>
+    </section>
 
   }
 
-</div>
+</main>

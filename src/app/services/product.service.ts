@@ -16,6 +16,7 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 21,
       promocao: false,
+      
       origem: 'Brasil',
       ingredientes: 'Calabresa, queijo muçarela, cebola, molho de tomate e orégano.',
       tamanho: 'Grande - 8 fatias',
@@ -136,6 +137,7 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 25,
       promocao: false,
+
       origem: 'Brasil',
       ingredientes: 'Chocolate e cobertura cremosa.',
       tamanho: 'Grande - 4 fatias',

@@ -1,121 +1,156 @@
 <main class="checkout-page">
 
-  <div class="checkout-card">
+  <div class="checkout-container">
 
-    <h1>🍕 Finalizar compra</h1>
+    <div class="checkout-header">
+      <h1>🍕 Finalizar Pedido</h1>
 
-    <p>Preencha seus dados para finalizar o pedido.</p>
+      <p>
+        Preencha seus dados para finalizar sua compra.
+      </p>
+    </div>
 
-    <h2>📋 Dados do cliente</h2>
 
-    <form
-      #formulario="ngForm"
-      (ngSubmit)="finalizar(formulario)"
-    >
+    <section class="checkout-card">
 
-      <label for="nome">Nome completo</label>
+      <h2>📋 Dados do cliente</h2>
 
-      <input
-        id="nome"
-        name="nome"
-        type="text"
-        [(ngModel)]="nome"
-        required
-        placeholder="Digite seu nome"
-      >
 
-      <label for="cpf">CPF</label>
+      <!-- NOME -->
+      <div class="campo">
 
-      <input
-        id="cpf"
-        name="cpf"
-        type="text"
-        [(ngModel)]="cpf"
-        required
-        placeholder="000.000.000-00"
-      >
+        <label for="nome">
+          Nome completo
+        </label>
 
-      <label for="email">E-mail</label>
-
-<input
-  id="email"
-  name="email"
-  type="email"
-  [(ngModel)]="email"
-  #emailCampo="ngModel"
-  required
-  email
-  placeholder="seuemail@email.com"
->
-
-@if (emailCampo.invalid && emailCampo.touched) {
-  <small class="erro-email">
-    ⚠️ Digite um e-mail válido.
-  </small>
-}
-
-      <label for="endereco">Endereço</label>
-
-      <input
-        id="endereco"
-        name="endereco"
-        type="text"
-        [(ngModel)]="endereco"
-        required
-        placeholder="Rua, número e bairro"
-      >
-
-      <label for="pagamento">
-        Método de pagamento
-      </label>
-
-      <select
-        id="pagamento"
-        name="pagamento"
-        [(ngModel)]="pagamento"
-        required
-      >
-
-        <option value="">
-          Selecione
-        </option>
-
-        <option value="Pix">
-          Pix
-        </option>
-
-        <option value="Cartão de crédito">
-          Cartão de crédito
-        </option>
-
-        <option value="Cartão de débito">
-          Cartão de débito
-        </option>
-
-        <option value="Dinheiro">
-          Dinheiro
-        </option>
-
-      </select>
-
-      <div class="buttons">
-
-        <button
-          type="button"
-          (click)="voltar()"
+        <input
+          id="nome"
+          type="text"
+          name="nome"
+          [(ngModel)]="nome"
+          placeholder="Digite seu nome"
         >
-          ← Voltar
-        </button>
-
-        <button
-          type="submit"
-        >
-          🍕 Finalizar compra
-        </button>
 
       </div>
 
-    </form>
+
+      <!-- EMAIL -->
+      <div class="campo">
+
+        <label for="email">
+          E-mail
+        </label>
+
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Digite seu e-mail"
+        >
+
+      </div>
+
+
+      <!-- CPF -->
+      <div class="campo">
+
+        <label for="cpf">
+          CPF
+        </label>
+
+        <input
+          id="cpf"
+          type="text"
+          name="cpf"
+          [(ngModel)]="cpf"
+          placeholder="000.000.000-00"
+          maxlength="14"
+        >
+
+        <small>
+          Seu CPF será validado antes de finalizar o pedido.
+        </small>
+
+      </div>
+
+
+      <!-- ENDEREÇO -->
+      <div class="campo">
+
+        <label for="endereco">
+          Endereço
+        </label>
+
+        <input
+          id="endereco"
+          type="text"
+          name="endereco"
+          [(ngModel)]="endereco"
+          placeholder="Rua, número, bairro..."
+        >
+
+      </div>
+
+
+      <!-- PAGAMENTO -->
+      <div class="campo">
+
+        <label for="pagamento">
+          Forma de pagamento
+        </label>
+
+        <select
+          id="pagamento"
+          name="pagamento"
+          [(ngModel)]="pagamento"
+        >
+
+          <option value="">
+            Selecione uma opção
+          </option>
+
+          <option value="Pix">
+            Pix
+          </option>
+
+          <option value="Cartão de crédito">
+            Cartão de crédito
+          </option>
+
+          <option value="Cartão de débito">
+            Cartão de débito
+          </option>
+
+          <option value="Dinheiro">
+            Dinheiro
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- FINALIZAR -->
+      <button
+        type="button"
+        class="finalizar-button"
+        (click)="finalizarPedido()"
+      >
+        🍕 Finalizar pedido
+      </button>
+
+
+      <!-- VOLTAR -->
+      <button
+        type="button"
+        class="voltar-button"
+        onclick="history.back()"
+      >
+        ← Voltar
+      </button>
+
+    </section>
 
   </div>
 
