@@ -8,4 +8,9 @@ export interface Product {
   categoria: string;
   estoque: number;
   promocao: boolean;
+
+  origem: string;
+  ingredientes: string;
+  tamanho: string;
+  curiosidade: string;
 }

@@ -16,6 +16,10 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 21,
       promocao: false,
+      origem: 'Brasil',
+      ingredientes: 'Calabresa, queijo muçarela, cebola, molho de tomate e orégano.',
+      tamanho: 'Grande - 8 fatias',
+     curiosidade: 'Uma das pizzas mais pedidas da popularidade.',
     },
     {
       id: 2,
@@ -27,6 +31,10 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 13,
       promocao: false,
+      origem: 'Brasil',
+      ingredientes: 'Frango desfiado, catupiry e queijo muçarela.',
+      tamanho: 'Grande - 8 fatias',
+      curiosidade: 'Uma pizza irresistível e muito saborosa.',    
     },
     {
       id: 3,
@@ -38,6 +46,10 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 24,
       promocao: false,
+      origem: 'Brasil',
+      ingredientes: 'Muçarela, provolone, parmesão e catupiry.',
+      tamanho: 'Grande - 8 fatias',
+      curiosidade: 'Uma das pizzas mais gostosas da região.',
     },
     {
       id: 4,
@@ -49,6 +61,10 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 20,
       promocao: false,
+      origem: 'Brasil',
+      ingredientes: 'Presunto, ovo, cebola, ervilha e queijo.',
+      tamanho: 'Grande - 8 fatias',
+      curiosidade: 'Uma das pizzas mais populares nas pizzarias brasileiras.',
     },
     {
       id: 5,
@@ -60,6 +76,10 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 17,
       promocao: false,
+      origem: 'Brasil',
+      ingredientes: 'Queijo, tomate e manjericão.',
+      tamanho: 'Grande - 8 fatias',
+      curiosidade: 'Uma das pizzas mais saudáveis da população.',
     },
     {
       id: 6,
@@ -71,6 +91,10 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 29,
       promocao: false,
+      origem: 'Brasil',
+      ingredientes: 'Bacon crocante e queijo.',
+      tamanho: 'Grande - 8 fatias',
+      curiosidade: 'Uma das pizzas mais saborosas da região.',
     },
     {
       id: 7,
@@ -82,6 +106,10 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 19,
       promocao: false,
+      origem: 'Itália',
+      ingredientes: 'Pepperoni, queijo e orégano.',
+      tamanho: 'Grande - 8 fatias',
+      curiosidade: 'Uma das pizzas mais populares nas pizzarias Italienas.',            
     },
     {
       id: 8,
@@ -93,6 +121,10 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 23,
       promocao: false,
+      origem: 'Brasil',
+      ingredientes: 'Morango e chocolate.',
+      tamanho: 'Grande - 8 fatias',
+      curiosidade: 'Pizza doce dois sabores otimas para um date romântico.',
     },
     {
       id: 9,
@@ -104,6 +136,10 @@ export class ProductService {
       categoria: 'Pizzas',
       estoque: 25,
       promocao: false,
+      origem: 'Brasil',
+      ingredientes: 'Chocolate e cobertura cremosa.',
+      tamanho: 'Grande - 4 fatias',
+      curiosidade: 'Uma das pizzas doces mais pedidas.',
     },
   ];
 

@@ -1,4 +1,5 @@
 import { Component, inject, input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Product } from '../../interfaces/product';
 import { CartService } from '../../services/cart.service';
@@ -15,12 +16,18 @@ export class PizzaCard {
   pizza = input.required<Product>();
 
   cartService = inject(CartService);
+  router = inject(Router);
+
+  abrirDetalhes(): void {
+    this.router.navigate(['/produto', this.pizza().id]);
+  }
 
   adicionarAoCarrinho(): void {
     this.cartService.adicionar(this.pizza());
   }
 
   precoAtual(): number {
+
     const produto = this.pizza();
 
     if (
@@ -35,6 +42,7 @@ export class PizzaCard {
   }
 
   estoqueDisponivel(): number {
+
     const produto = this.pizza();
 
     const item = this.cartService.items().find(
@@ -54,4 +62,5 @@ export class PizzaCard {
   podeAdicionar(): boolean {
     return this.estoqueDisponivel() > 0;
   }
+
 }
